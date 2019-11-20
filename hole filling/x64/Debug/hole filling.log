@@ -1,0 +1,4 @@
+﻿  HoleFinder.cpp
+c:\users\user\documents\visual studio 2015\projects\hole filling\hole filling\holefinder.cpp(53): warning C4715: 'HoleFinder::findHoleInImage': not all control paths return a value
+  hole filling.vcxproj -> C:\Users\USER\Documents\Visual Studio 2015\Projects\hole filling\x64\Debug\hole filling.exe
+  hole filling.vcxproj -> C:\Users\USER\Documents\Visual Studio 2015\Projects\hole filling\x64\Debug\hole filling.pdb (Full PDB)
