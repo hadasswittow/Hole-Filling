@@ -20,15 +20,17 @@ MyImage HoleFillingLibrary::holeFillingLibrary(MyImage& img, unsigned int z, flo
 	setStrategy(connection_strategy);
 	setWeighting(&w);
 	std::map<std::string, pixelset> hole_and_boundary = hole_finder->findHoleAndBoundary(img, HOLE_COLOR);
-	hole_filler->fillHoleInImage(img, hole_and_boundary["hole"], hole_and_boundary["boundary"]);
+	hole_filler->fillHoleInImageOptimal(img, hole_and_boundary["boundary"],HOLE_COLOR);
 	return MyImage();
 }
 void HoleFillingLibrary::setStrategy(connectivity_e connected) {
 	// sets the connectivity strategy- four connected or eight connected.
 	if (connected == FOUR) {
+		hole_filler->setConnectionStrategy(new FourConnected);
 		hole_finder->setConnectionStrategy(new FourConnected);
 	}
 	else if (connected == EIGHT) {
+		hole_filler->setConnectionStrategy(new EightConnected);
 		hole_finder->setConnectionStrategy(new EightConnected);
 	}
 
