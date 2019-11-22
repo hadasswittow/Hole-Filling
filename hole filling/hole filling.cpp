@@ -1,44 +1,41 @@
 #include "stdafx.h"
 #include "HoleFillingLibrary.h"
 #include <opencv2/opencv.hpp>
-
 #include <iostream>
 #include <string>
-
+#include <vector>
 using namespace cv;
-using namespace std;
+void saveImageToFile(Mat filled_image);
+MyImage getInputAndFillHole();
 
 int main(int argc, char** argv)
 {
-	// Read the image file
-	Mat image = imread("C:/Users/USER/Documents/Visual Studio 2015/Projects/hole filling/img.png", IMREAD_GRAYSCALE);
+	MyImage img = getInputAndFillHole(); // gets the information from the user and returns the image filled.	
+	saveImageToFile(img.getImage()); // writes the result to an image file.
+	
+	return 0;
+}
+void saveImageToFile(Mat filled_image) {
+	filled_image *= 255;
+	filled_image.convertTo(filled_image, CV_8U);
+	imwrite("hole_filled.jpg", filled_image);
+}
+MyImage getInputAndFillHole() {
+	std::cout << "Hi! Please enter your image file name, z, epsilon and the way your pixels are connect!\n";
+	std::cout << "For example: myImage.png 2 0.0001 8 .\n";
+	std::string image_name;
+	int z; float epsilon; int _con;
+	std::cin >> image_name >> z >> epsilon >> _con;
+	connectivity_e con = (_con == 4) ? FOUR : EIGHT;
+	Mat image = imread(image_name, IMREAD_GRAYSCALE);
+	if (image.empty()) // Check for failure
+	{
+		std::cout << "Could not open or find the image" << std::endl;
+		system("pause"); //wait for any key press
+	}
 	image.convertTo(image, CV_32FC3, 1.0 / 255);
 	MyImage img(image);
 	HoleFillingLibrary hfl;
-	HoleFinder hf;
-	hf.setHoleMask(img);
-	hf.setConnectionStrategy(new EightConnected);
-	ImageHoleMask hole=hf.findHoleInImage(img,1.0);
-	char c;
-	//c= hole.getMask().at<uchar>(113, 235);
-	cout << "hi" << endl;
-	
-	if (image.empty()) // Check for failure
-	{
-		cout << "Could not open or find the image" << endl;
-		system("pause"); //wait for any key press
-		return -1;
-	}
-
-	String windowName = "My HelloWorld Window"; //Name of the window
-
-	namedWindow(windowName, WINDOW_AUTOSIZE); // Create a window
-
-	imshow(windowName, image); // Show our image inside the created window.
-
-	waitKey(0); // Wait for any keystroke in the window
-
-	destroyWindow(windowName); //destroy the created window
-
-	return 0;
+	hfl.holeFillingLibrary(img, z,epsilon, con);
+	return img;
 }

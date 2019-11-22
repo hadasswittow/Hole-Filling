@@ -33,9 +33,6 @@
     <ClInclude Include="HoleFillingLibrary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BoundaryFinder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ConnectedPixelsStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,13 +45,13 @@
     <ClInclude Include="HoleFinder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ImageHoleMask.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IWeight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Weight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HoleFiller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,9 +71,6 @@
     <ClCompile Include="HoleFillingLibrary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BoundaryFinder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ConnectedPixelsStrategy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -89,13 +83,13 @@
     <ClCompile Include="HoleFinder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ImageHoleMask.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IWeight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Weight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HoleFiller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

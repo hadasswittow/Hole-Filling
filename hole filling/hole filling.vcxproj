@@ -151,12 +151,11 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BoundaryFinder.h" />
     <ClInclude Include="EightConnected.h" />
     <ClInclude Include="FourConnected.h" />
+    <ClInclude Include="HoleFiller.h" />
     <ClInclude Include="HoleFillingLibrary.h" />
     <ClInclude Include="HoleFinder.h" />
-    <ClInclude Include="ImageHoleMask.h" />
     <ClInclude Include="IWeight.h" />
     <ClInclude Include="MyImage.h" />
     <ClInclude Include="ConnectedPixelsStrategy.h" />
@@ -166,13 +165,12 @@
     <ClInclude Include="Weight.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BoundaryFinder.cpp" />
     <ClCompile Include="EightConnected.cpp" />
     <ClCompile Include="FourConnected.cpp" />
     <ClCompile Include="hole filling.cpp" />
+    <ClCompile Include="HoleFiller.cpp" />
     <ClCompile Include="HoleFillingLibrary.cpp" />
     <ClCompile Include="HoleFinder.cpp" />
-    <ClCompile Include="ImageHoleMask.cpp" />
     <ClCompile Include="IWeight.cpp" />
     <ClCompile Include="MyImage.cpp" />
     <ClCompile Include="ConnectedPixelsStrategy.cpp" />

@@ -5,32 +5,34 @@
 HoleFillingLibrary::HoleFillingLibrary()
 {
 	hole_finder = new HoleFinder();
-	boundary_finder= new BoundaryFinder();
-	
+	hole_filler = new HoleFiller();
 }
 
 
 HoleFillingLibrary::~HoleFillingLibrary()
 {
-	delete boundary_finder;
 	delete hole_finder;
+	delete hole_filler;
 }
-MyImage HoleFillingLibrary::holeFillingLibrary(Mat img, int z, int epsilon, connectivity_e con) {
-	MyImage image(img);
-	hole_finder->setHoleMask(img);//set the mask with image to know the mask size
-	ImageHoleMask image_hole_mask = hole_finder->findHoleInImage(image, HOLE_COLOR);
+MyImage HoleFillingLibrary::holeFillingLibrary(MyImage& img, unsigned int z, float epsilon, connectivity_e connection_strategy) {
+	//recieves an image with a hole and fills the hole according to an algorithm.
+	Weight w(z,epsilon);
+	setStrategy(connection_strategy);
+	setWeighting(&w);
+	std::map<std::string, pixelset> hole_and_boundary = hole_finder->findHoleAndBoundary(img, HOLE_COLOR);
+	hole_filler->fillHoleInImage(img, hole_and_boundary["hole"], hole_and_boundary["boundary"]);
 	return MyImage();
 }
 void HoleFillingLibrary::setStrategy(connectivity_e connected) {
+	// sets the connectivity strategy- four connected or eight connected.
 	if (connected == FOUR) {
-		FourConnected four;
-		boundary_finder->setConnectionStrategy(&four);
-		hole_finder->setConnectionStrategy(&four);
+		hole_finder->setConnectionStrategy(new FourConnected);
 	}
 	else if (connected == EIGHT) {
-		EightConnected eight;
-		boundary_finder->setConnectionStrategy(&eight);
-		hole_finder->setConnectionStrategy(&eight);
+		hole_finder->setConnectionStrategy(new EightConnected);
 	}
 
+}
+void HoleFillingLibrary::setWeighting(IWeight* weight) {
+	hole_filler->setWeighting(weight);
 }

@@ -1,18 +1,21 @@
 #pragma once
 #include "IWeight.h"
 #include <math.h>
-template<unsigned int Z, float EPSILON>
 class Weight : public IWeight
 {
 public:
-	Weight() {};
+	Weight(unsigned int _z, float _epsilon):z(_z),epsilon(_epsilon) {};
 	~Weight() {};
-	/*virtual*/ float weight(PixelCoordinate u, PixelCoordinate v);
+	/*virtual*/ float weight(Coordinate u, Coordinate v);
+
+private:
+	unsigned int z;
+	float epsilon;
+
 };
-template<unsigned int Z, float EPSILON>
-inline float Weight::weight(PixelCoordinate u, PixelCoordinate v) {
+inline float Weight::weight(Coordinate u, Coordinate v) {
 	int distance = sqrt(pow((u.getX() - v.getX()), 2) + pow((u.getY() - v.getY()), 2));
-	return 1.0/(pow(distance,Z)+EPSILON)
+	return 1.0 / (pow(distance, z) + epsilon);
 }
 
 

@@ -2,7 +2,7 @@
 #include <iostream>
 class Coordinate {
 public:
-	Coordinate() {};
+	Coordinate():x(0),y(0){};
 	Coordinate(unsigned int _x, unsigned int _y) :x(_x), y(_y) {};
 	~Coordinate() {};
 	unsigned int getX()const;
@@ -14,9 +14,10 @@ protected:
 class PixelCoordinate: public Coordinate
 {
 public:
-	PixelCoordinate() {};
+	PixelCoordinate():color(0.0) {};
 	PixelCoordinate(unsigned int _x, unsigned int _y, float _color) :Coordinate(_x, _y), color(_color) {};
 	PixelCoordinate(const PixelCoordinate& temp);
+	PixelCoordinate& operator= (const PixelCoordinate &fraction);
 	~PixelCoordinate();
 	friend std::ostream& operator<<(std::ostream &out, const PixelCoordinate &pc);
 	float getColor()const;
@@ -52,4 +53,9 @@ inline std::ostream & operator << (std::ostream &out, const PixelCoordinate &pc)
 {
 	out << "( " << pc.getX() << ", " << pc.getY() << ", " << pc.getColor() << " )" << std::endl;
 	return out;
+}
+inline PixelCoordinate& PixelCoordinate::operator= (const PixelCoordinate &temp) {
+	x = temp.x;
+	y = temp.y;
+	color = temp.color;
 }

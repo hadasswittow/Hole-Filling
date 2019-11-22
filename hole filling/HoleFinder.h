@@ -1,6 +1,6 @@
 #pragma once
 #include "ConnectedPixelsStrategy.h"
-#include "ImageHoleMask.h"
+#include <map>
 typedef std::set<PixelCoordinate> pixelset;
 
 class HoleFinder
@@ -8,15 +8,9 @@ class HoleFinder
 public:
 	HoleFinder(){};
 	~HoleFinder();
-	ImageHoleMask findHoleInImage(const MyImage& image, float hole_color);
-	void fillHoleMask(const MyImage& image, float hole_color, PixelCoordinate pixel);
+	std::map<std::string, pixelset> findHoleAndBoundary( MyImage& image, float hole_color);
 	void setConnectionStrategy(ConnectedPixelsStrategy* cs);
-	void setHoleMask(const MyImage& image);
 
 private:
 	ConnectedPixelsStrategy* connection_strategy;
-	ImageHoleMask hole_mask;
 };
-inline void HoleFinder::setHoleMask(const MyImage& image) {
-	hole_mask.setMask(image.getImage());
-}
