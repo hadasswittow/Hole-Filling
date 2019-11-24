@@ -1,2 +1,23 @@
-﻿  hole filling.vcxproj -> C:\Users\USER\Documents\Visual Studio 2015\Projects\Hole filling- 2\Hole-Filling\x64\Debug\hole filling.exe
+﻿  HoleFinder.cpp
+  HoleFiller.cpp
+  FourConnected.cpp
+  EightConnected.cpp
+  Generating Code...
+c:\users\user\documents\visual studio 2015\projects\hole filling- 2\hole-filling\hole filling\holefiller.cpp(71): warning C4715: 'getHolePixel': not all control paths return a value
+  Compiling...
+  hole filling.cpp
+c:\users\user\documents\visual studio 2015\projects\hole filling- 2\hole-filling\hole filling\weight.h(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\user\documents\visual studio 2015\projects\hole filling- 2\hole-filling\hole filling\weight.h(18): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Weight.cpp
+c:\users\user\documents\visual studio 2015\projects\hole filling- 2\hole-filling\hole filling\weight.h(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\user\documents\visual studio 2015\projects\hole filling- 2\hole-filling\hole filling\weight.h(18): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  PixelCoordinate.cpp
+  MyImage.cpp
+  IWeight.cpp
+  HoleFillingLibrary.cpp
+c:\users\user\documents\visual studio 2015\projects\hole filling- 2\hole-filling\hole filling\weight.h(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\user\documents\visual studio 2015\projects\hole filling- 2\hole-filling\hole filling\weight.h(18): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  ConnectedPixelsStrategy.cpp
+  Generating Code...
+  hole filling.vcxproj -> C:\Users\USER\Documents\Visual Studio 2015\Projects\Hole filling- 2\Hole-Filling\x64\Debug\hole filling.exe
   hole filling.vcxproj -> C:\Users\USER\Documents\Visual Studio 2015\Projects\Hole filling- 2\Hole-Filling\x64\Debug\hole filling.pdb (Full PDB)

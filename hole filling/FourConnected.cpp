@@ -10,11 +10,11 @@ FourConnected::FourConnected()
 FourConnected::~FourConnected()
 {
 }
-std::set<PixelCoordinate> FourConnected::getConnectedPixels(const MyImage& _image, Coordinate pc) {
+std::unordered_set<PixelCoordinate> FourConnected::getConnectedPixels(const MyImage& _image, Coordinate pc) {
 	unsigned int x = pc.getX();
 	unsigned int y = pc.getY();
 	Mat image = _image.getImage();
-	std::set<PixelCoordinate> ans;
+	std::unordered_set<PixelCoordinate> ans;
 	if (x == 0 || y == 0 || x == image.rows - 1 || y == image.cols)
 		return getEdgeConnectedPixels(_image, pc);
 
@@ -25,11 +25,11 @@ std::set<PixelCoordinate> FourConnected::getConnectedPixels(const MyImage& _imag
 	return ans;
 
 }
-std::set<PixelCoordinate> FourConnected::getEdgeConnectedPixels(const MyImage& _image, Coordinate pc) {
+std::unordered_set<PixelCoordinate> FourConnected::getEdgeConnectedPixels(const MyImage& _image, Coordinate pc) {
 	unsigned int x = pc.getX();
 	unsigned int y = pc.getY();
 	Mat image = _image.getImage();
-	std::set<PixelCoordinate> ans;
+	std::unordered_set<PixelCoordinate> ans;
 	if (x == 0) {
 		if (y == 0) {
 			ans.insert(PixelCoordinate(x + 1, y, image.at<float>(x + 1, y)));

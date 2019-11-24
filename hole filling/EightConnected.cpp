@@ -10,11 +10,11 @@ EightConnected::EightConnected()
 EightConnected::~EightConnected()
 {
 }
-std::set<PixelCoordinate> EightConnected::getConnectedPixels(const MyImage& _image, Coordinate pc) {
+std::unordered_set<PixelCoordinate> EightConnected::getConnectedPixels(const MyImage& _image, Coordinate pc) {
 	unsigned int x = pc.getX();
 	unsigned int y = pc.getY();
 	Mat image = _image.getImage();
-	std::set<PixelCoordinate> ans;
+	std::unordered_set<PixelCoordinate> ans;
 	if (x == 0 || y == 0 || x == image.rows - 1 || y == image.cols)
 		return getEdgeConnectedPixels(_image, pc);
 
@@ -30,11 +30,11 @@ std::set<PixelCoordinate> EightConnected::getConnectedPixels(const MyImage& _ima
 	return ans;
 
 }
-std::set<PixelCoordinate> EightConnected::getEdgeConnectedPixels(const MyImage& _image, Coordinate pc) {
+std::unordered_set<PixelCoordinate> EightConnected::getEdgeConnectedPixels(const MyImage& _image, Coordinate pc) {
 	unsigned int x = pc.getX();
 	unsigned int y = pc.getY();
 	Mat image = _image.getImage();
-	std::set<PixelCoordinate> ans;
+	std::unordered_set<PixelCoordinate> ans;
 	if (x == 0) {
 		if (y == 0) {
 			ans.insert(PixelCoordinate(x, y + 1, image.at<float>(x, y + 1)));

@@ -10,6 +10,7 @@ MyImage getInputAndFillHole();
 
 int main(int argc, char** argv)
 {
+
 	MyImage img = getInputAndFillHole(); // gets the information from the user and returns the image filled.	
 	saveImageToFile(img.getImage()); // writes the result to an image file.
 	
@@ -21,7 +22,7 @@ void saveImageToFile(Mat filled_image) {
 	imwrite("hole_filled.jpg", filled_image);
 }
 MyImage getInputAndFillHole() {
-	std::cout << "Hi! Please enter your image file name, z, epsilon and the way your pixels are connect!\n";
+	std::cout << "Hi! Please enter your image file name, z, epsilon and the way your pixels are connected!\n";
 	std::cout << "For example: myImage.png 2 0.0001 8 .\n";
 	std::string image_name;
 	int z; float epsilon; int _con;

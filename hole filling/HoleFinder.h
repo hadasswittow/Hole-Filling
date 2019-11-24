@@ -1,7 +1,9 @@
 #pragma once
 #include "ConnectedPixelsStrategy.h"
 #include <map>
-typedef std::set<PixelCoordinate> pixelset;
+#include <unordered_set>
+
+typedef std::unordered_set <PixelCoordinate> pixelset;
 
 class HoleFinder
 {

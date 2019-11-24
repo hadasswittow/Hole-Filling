@@ -25,6 +25,9 @@ public:
 private:
 	float color;
 };
+inline bool operator ==(const PixelCoordinate & obj1,const PixelCoordinate & obj2){
+	return ((obj1.getX() == obj2.getX()) && (obj1.getY() == obj2.getY()));
+}
 inline PixelCoordinate::PixelCoordinate(const PixelCoordinate& temp) {
 	x = temp.x;
 	y = temp.y;
@@ -58,4 +61,17 @@ inline PixelCoordinate& PixelCoordinate::operator= (const PixelCoordinate &temp)
 	x = temp.x;
 	y = temp.y;
 	color = temp.color;
+}
+namespace std
+{
+	template<>
+	struct hash<PixelCoordinate>
+	{
+		size_t
+		operator()(const PixelCoordinate & obj) const
+		{
+			size_t hash = obj.getX() + 10 * obj.getY();
+			return hash;
+		}
+	};
 }
